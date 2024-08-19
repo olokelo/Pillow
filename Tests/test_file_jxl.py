@@ -45,7 +45,10 @@ class TestFileJpegXl:
 
     def test_version(self) -> None:
         _jpegxl.JpegXlDecoderVersion()
-        assert re.search(r"\d+\.\d+\.\d+$", features.version_module("jpegxl"))
+        version_mode = features.version_module("jpegxl")
+        assert version_mode is not None
+        if version_mode:
+            assert re.search(r"\d+\.\d+\.\d+$", version_mode)
 
     def test_read_rgb(self) -> None:
         """
