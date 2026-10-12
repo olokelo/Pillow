@@ -347,7 +347,7 @@ DEPS: dict[str, dict[str, Any]] = {
         "license": "LICENSE",
         "build": [
             *cmds_cmake(
-                "jxl",
+                "jxl_dec",
                 rf"-DHWY_INCLUDE_DIR=..\highway-{V['highway']}",
                 r"-DLCMS2_LIBRARY=..\..\lib\lcms2_static",
                 r"-DLCMS2_INCLUDE_DIR=..\..\inc",
@@ -357,7 +357,7 @@ DEPS: dict[str, dict[str, Any]] = {
                 "-DBUILD_TESTING:BOOL=OFF",
                 "-DBUILD_SHARED_LIBS:BOOL=OFF",
             ),
-            cmd_copy(r"lib\jxl.lib", "{lib_dir}"),
+            cmd_copy(r"lib\jxl_dec.lib", "{lib_dir}"),
             *cmds_cmake("jxl_threads"),
             cmd_copy(r"lib\jxl_threads.lib", "{lib_dir}"),
             cmd_mkdir(r"{inc_dir}\jxl"),

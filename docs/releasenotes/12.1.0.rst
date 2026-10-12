@@ -43,6 +43,13 @@ macOS in addition to Windows. On macOS, this is a CGWindowID::
 Other changes
 =============
 
+JPEG XL decoder-only library
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+JPEG XL support now links against ``libjxl_dec`` and ``libjxl_threads`` to reduce
+wheel size. Source builds require the decoder-only library; use
+``depends/install_libjxl.sh`` if it is not provided by your libjxl package.
+
 Added MorphOp support for 1 mode images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

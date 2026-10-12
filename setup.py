@@ -793,10 +793,10 @@ class pil_build_ext(build_ext):
             if _find_include_file(self, "jxl/decode.h") and _find_include_file(
                 self, "jxl/thread_parallel_runner.h"
             ):
-                if _find_library_file(self, "jxl") and _find_library_file(
+                if _find_library_file(self, "jxl_dec") and _find_library_file(
                     self, "jxl_threads"
                 ):
-                    feature.set("jpegxl", "jxl")
+                    feature.set("jpegxl", "jxl_dec")
 
         if feature.want("imagequant"):
             _dbg("Looking for imagequant")
@@ -1023,10 +1023,10 @@ class pil_build_ext(build_ext):
 
         jpegxl = feature.get("jpegxl")
         if isinstance(jpegxl, str):
-            libs = [jpegxl, jpegxl + "_threads"]
+            libs = [jpegxl, "jxl_threads"]
             args: list[str] | None = None
             if sys.platform == "win32":
-                libs.extend(["brotlicommon", "brotlidec", "brotlienc", "hwy"])
+                libs.extend(["brotlicommon", "brotlidec", "hwy"])
                 args = ["-DJXL_STATIC_DEFINE"]
             self._update_extension("PIL._jpegxl", libs, args=args)
         else:

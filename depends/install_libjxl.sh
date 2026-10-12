@@ -12,6 +12,7 @@ popd
 ./download-and-extract.sh libjxl-$version https://github.com/libjxl/libjxl/archive/v$version.tar.gz
 
 pushd libjxl-$version
+patch -p0 -i ../../patches/libjxl-$version.tar.gz.patch
 cmake -DCMAKE_INSTALL_PREFIX=/usr -DJPEGXL_ENABLE_SJPEG=OFF -DJPEGXL_ENABLE_SKCMS=OFF -DBUILD_TESTING=OFF .
 make -j4 install
 popd

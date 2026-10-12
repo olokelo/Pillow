@@ -100,6 +100,9 @@ Many of Pillow's features require external libraries:
 * **libjxl** provides support for the JPEG XL format.
 
   * Pillow requires libjxl version **0.9.0** or greater.
+  * Pillow links against the decoder-only ``libjxl_dec`` library and
+    ``libjxl_threads``. If your libjxl package does not install ``libjxl_dec``,
+    use ``depends/install_libjxl.sh`` to build and install it.
 
 .. tab:: Linux
 

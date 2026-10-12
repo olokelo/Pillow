@@ -1,0 +1,16 @@
+--- lib/jxl.cmake
++++ lib/jxl.cmake
+@@ -257,10 +257,9 @@
+   endif()
+ endforeach()
+ 
+-# Only install libjxl public library. The libjxl_dec is not installed since it
+-# contains symbols also in libjxl which would conflict if programs try to use
+-# both.
+-install(TARGETS jxl
++# Install the decoder-only library for applications that do not need encoding.
++# Applications must link either jxl or jxl_dec, since they contain common symbols.
++install(TARGETS jxl jxl_dec
+   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
